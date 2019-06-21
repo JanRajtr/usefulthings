@@ -20,4 +20,5 @@ extension CAShapeLayer {
         strokeColor = color.cgColor
         path = UIBezierPath(roundedRect: rect, cornerRadius: 7).cgPath
     }
+    
 }

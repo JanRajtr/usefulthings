@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Formats of the dates available for function of with(:_).
 enum DateFormats:String {
     case ddMMyyyy = "dd.MM.yyyy"
     case ddMMyyyyHHmmss = "dd.MM.yyyy HH:mm:ss"
@@ -21,10 +22,19 @@ enum DateFormats:String {
     case LLLL = "LLLL"
 }
 
-/// Implements MySQL string value of given `Date`.
 extension Date {
-    // MARK - DOCUMENTATION FINISHED ->
     
+    
+    /// Returns the Date in given string format.
+    /// - Returns: The date in string.
+    /// - Parameter format: Date format in which the date should be returned.
+    func with(format:DateFormats) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format.rawValue
+        return dateFormatter.string(from: self as Date)
+    }
+    
+
     /// Returns `String` representation of given `Date` class in MySQL format
     /// - returns:
     ///     - `String` value in "yyyy-MM-dd'T'HH:mm:ss.SSSZ" format
@@ -33,6 +43,24 @@ extension Date {
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: self as Date)
     }
+    
+    let day:String {
+        return self.with(format: .dd)
+    }
+    
+    let month:String {
+        return self.with(format: .MM)
+    }
+    
+    let monthAndYear:String {
+        return self.with(format: .MMYYYY)
+    }
+    
+    let year:String {
+        return self.with(format: .yyyy)
+    }
+    
+    
     
     
     /// Returns _Date_ object from given string in MySQL format
@@ -54,14 +82,6 @@ extension Date {
             return Date()
         }
     }
-    
-    func with(format:DateFormats) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format.rawValue
-        return dateFormatter.string(from: self as Date)
-    }
-    
-
     
     
     
@@ -86,28 +106,7 @@ extension Date {
     }
     
     
-    
-    func day(gmt:Bool) -> String {
-        return self.with(format: .dd)
-    }
-    
-    func month(gmt:Bool) -> String {
-        return self.with(format: .MM)
-    }
-    
-    func monthAndYear(gmt:Bool) -> String {
-        return self.with(format: .MMYYYY)
-    }
-    
-    func year(gmt:Bool) -> String {
-        return self.with(format: .yyyy)
-    }
-    
-    
-}
-
-extension Date {
-    
+    /// Recalculates the given date to UTC date accroding to current timezone.
     func fromCurrentToUTC() -> Date {
         
         let dateFormatter = DateFormatter()
@@ -121,7 +120,7 @@ extension Date {
         
     }
     
-    
+    /// Recalculates the given date from UTC date accroding to current timezone.
     func fromUTCToCurrent() -> Date {
         
         let dateFormatter = DateFormatter()
@@ -145,6 +144,7 @@ extension Date {
         return dateFormatter.date(from: currentDate)!
     }
     
+    /// Returns localized name of the month for the given date.
     func monthName() -> String {
         let date = self
         let calendar = Calendar.current
@@ -156,9 +156,6 @@ extension Date {
         return NSLocalizedString(name, comment: "")
     }
     
-}
-
-extension Date {
     /// Returns the amount of years from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
@@ -222,5 +219,7 @@ extension Date {
         if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
         return ""
     }
-    // MARK - DOCUMENTATION FINISHED ->|
+    
 }
+
+

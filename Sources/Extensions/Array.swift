@@ -9,12 +9,10 @@
 import Foundation
 
 extension Array where Element : Hashable {
+    
+    /// Removes the duplicates from the array. The function is mutating.
     mutating func removeDuplicates() {
-        
         self = Array(Set(self))
-        
-        
-        
     }
 }
 

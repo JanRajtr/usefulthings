@@ -13,17 +13,17 @@ import MediaPlayer
 
 extension AVPlayerViewController {
     
+    /*
+ 
     override open func viewWillDisappear(_ animated: Bool) {
         
         let url:URL? = ((player?.currentItem?.asset) as? AVURLAsset)?.url
         
         if url != nil {
             
-            // Create a FileManager instance
-            
+            /
             let fileManager = FileManager.default
             
-            // Delete 'hello.swift' file
             
             do {
                 try fileManager.removeItem(at: url!)
@@ -35,5 +35,6 @@ extension AVPlayerViewController {
         
         
     }
+  */
     
 }
