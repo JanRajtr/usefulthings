@@ -10,7 +10,7 @@ import Foundation
 
 infix operator ====:ComparisonPrecedence
 
-extension Array where Element: Comparable {
+public extension Array where Element: Comparable {
     
     /// Sorts the array. The affects the order of the array.
     mutating func sort() {
@@ -19,20 +19,20 @@ extension Array where Element: Comparable {
 }
 
 
-extension Array where Element : Hashable {
+public extension Array where Element : Hashable {
     
-    /// Removes the duplicates from the array. The function is mutating.
+    /// Removes the duplicates from the array. The function is mutating and affects the order of the array.
     mutating func removeDuplicates() {
         self = Array(Set(self))
     }
     
     
-    /// Removes the duplicates from the array. The affects the order of the array.
+    /// Removes the duplicates from the array. The function affects the order of the array.
     func duploMap() -> Array<Element> {
         return Array(Set(self))
     }
     
-    /// Non-duplicates from the array. The affects the order of the array.
+    /// Non-duplicates from the array. The function affects the order of the array.
     var nonDuplicates:Array<Element> {
         return Array(Set(self))
     }
