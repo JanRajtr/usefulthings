@@ -43,4 +43,17 @@ extension UIViewController {
             popoverController.barButtonItem = sender
         }
     }
+    
+    func alertError(title:String? = "ERROR", error:Error?, unknownErrorMessage:String? = "UNKNOWN") {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: error?.localizedDescription ?? unknownErrorMessage, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                
+            })
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: {
+                
+            })
+        }
+    }
 }

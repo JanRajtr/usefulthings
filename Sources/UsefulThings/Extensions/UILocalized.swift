@@ -5,9 +5,10 @@
 //  Created by Jan Rajtr on 21.06.19.
 //  Copyright © 2019 Jan Rajtr. All rights reserved.
 //
-
+#if os(iOS) || os(watchOS) || os(tvOS)
 import Foundation
 import UIKit
+import CryptoKit
 
 class UILocalizedLabel: UILabel {
     
@@ -38,3 +39,9 @@ class UILocalizedLabel: UILabel {
     
     
 }
+#elseif os(OSX)
+
+#else
+    
+#endif
+

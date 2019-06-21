@@ -73,27 +73,3 @@ extension UIView {
     
 }
 
-
-extension UIViewController {
-    
-    
-    
-    func announceError(error:Error?) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Error", message: error?.localizedDescription ?? "", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                
-            })
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: {
-                
-            })
-        }
-    }
-    
-    
-    
-    
-}
-
-
