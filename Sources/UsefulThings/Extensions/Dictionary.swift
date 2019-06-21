@@ -16,7 +16,7 @@ public extension Dictionary
     ///   - keys: `Array<Key>`
     ///   - values: `Array<Values>`
     ///
-    public init(keys: [Key], values: [Value])
+    init(keys: [Key], values: [Value])
     {
         precondition(keys.count == values.count)
         

@@ -13,44 +13,25 @@ import UIKit
 public extension String {
     
     
-    /// Function returns String with first letter lowecased. Function does not distinguish more words in String, so only the first letter of the whole String is always lowercased.
-    /// - returns: Edited string value of self.
-    public func uncapitalizingFirstLetter() -> String {
-        let first = String(self.prefix(1)).lowercased()
-        let other = String(self.dropFirst())
-        return first + other
-    }
-    
-    /// Function mutates self String with first letter lowecased. Function does not distinguish more words in String, so only the first letter of the whole String is always lowercased. The function is __mutating__.
-    /// - returns: Edited string value of self.
-    public mutating func uncapitalizeFirstLetter() {
-        self = self.uncapitalizingFirstLetter()
-    }
-    
-    public var uncapitalized:String {
-        return self.uncapitalizingFirstLetter()
-    }
-    
     
     /// Function generates SHA256 in `String` format. Hash is generated from data of `String` described in UTF8.
     /// - returns: 'SHA256' hash value of self.
-    public func get_sha256_String() -> String {
+    func get_sha256_String() -> String {
         guard let data = self.data(using: .utf8) else {
             print("Data not available")
             return ""
         }
-        print("Returning hash...")
         return getHexString(fromData: digest(input: data as NSData))
     }
     
-    public func digest(input : NSData) -> NSData {
+    func digest(input : NSData) -> NSData {
         let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
         var hashValue = [UInt8](repeating: 0, count: digestLength)
         CC_SHA256(input.bytes, UInt32(input.length), &hashValue)
         return NSData(bytes: hashValue, length: digestLength)
     }
     
-    public func getHexString(fromData data: NSData) -> String {
+    func getHexString(fromData data: NSData) -> String {
         var bytes = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&bytes, length: data.length)
         
@@ -60,9 +41,44 @@ public extension String {
         }
         return hexString
     }
-    // MARK - DOCUMENTATION FINISHED ->|
     
-    public func snakeCased() -> String? {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func uncapitalizeFirstLetter() -> String {
+        let first = String(self.prefix(1)).lowercased()
+        let other = String(self.dropFirst())
+        return first + other
+    }
+    
+    mutating func uncapitalize() {
+        self = self.uncapitalizeFirstLetter()
+    }
+    
+    var uncapitalized:String {
+        return self.uncapitalizeFirstLetter()
+    }
+    
+    
+    var snakeCased:String? {
         let pattern = "([a-z0-9])([A-Z])"
         
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
@@ -71,28 +87,31 @@ public extension String {
     }
     
     
-    public static func random(length: Int) -> String {
+    func snakeCase() -> String? {
+        let pattern = "([a-z0-9])([A-Z])"
+        
+        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        let range = NSRange(location: 0, length: self.count)
+        return regex?.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: "$1_$2").lowercased()
+    }
+    
+    
+    static func random(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0...length-1).map{ _ in letters.randomElement()! })
     }
     
     
-    public var localized:String {
+    var localized:String {
         return NSLocalizedString(self, comment: self)
         
     }
     
-    public func localize() -> String {
+    func localize() -> String {
         return NSLocalizedString(self, comment: self)
         
     }
     
-    
-    
-    
-}
-
-extension String {
     
     enum RegularExpressions: String {
         case phone = "^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$"
@@ -123,7 +142,6 @@ extension String {
             }
         }
     }
-    
     
 }
 

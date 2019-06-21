@@ -16,7 +16,7 @@ public extension CAShapeLayer {
     ///     - rect:     'CGRect' rectangle dimensions.
     ///     - color:    'UIColor' of the rectangle.
     ///     - filled:   'Bool' value indicating if the rectangle should be filled.
-    public func drawRoundedRect(rect: CGRect, andColor color: UIColor, filled: Bool) {
+    func drawRoundedRect(rect: CGRect, andColor color: UIColor, filled: Bool) {
         fillColor = filled ? color.cgColor : UIColor.white.cgColor
         strokeColor = color.cgColor
         path = UIBezierPath(roundedRect: rect, cornerRadius: 7).cgPath
