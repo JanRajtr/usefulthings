@@ -6,9 +6,8 @@
 //  Copyright © 2019 Jan Rajtr. All rights reserved.
 //
 
+
 import UIKit
-
-
 
 extension UIScrollView {
     

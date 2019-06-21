@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import UIKit
 import CommonCrypto
-
+import UIKit
 
 extension UIImage {
     
@@ -170,6 +169,7 @@ extension UIImage {
     
     
     
+    @available(iOS 10.0, *)
     func imageWith(newSize: CGSize) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: newSize)
         let image = renderer.image { _ in

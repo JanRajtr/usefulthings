@@ -7,17 +7,8 @@
 //
 
 import Foundation
-
-//
-//  StringExtension.swift
-//  Constructo
-//
-//  Created by Jan Rajtr on 15.08.17.
-//  Copyright © 2017 Jan Rajtr. All rights reserved.
-//
-
-import Foundation
 import CommonCrypto
+import UIKit
 
 extension String {
     

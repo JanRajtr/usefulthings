@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 private var handle: UInt8 = 0;
 

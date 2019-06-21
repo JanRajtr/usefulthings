@@ -44,19 +44,19 @@ extension Date {
         return dateFormatter.string(from: self as Date)
     }
     
-    let day:String {
+    var day:String {
         return self.with(format: .dd)
     }
     
-    let month:String {
+    var month:String {
         return self.with(format: .MM)
     }
     
-    let monthAndYear:String {
+    var monthAndYear:String {
         return self.with(format: .MMYYYY)
     }
     
-    let year:String {
+    var year:String {
         return self.with(format: .yyyy)
     }
     
