@@ -12,7 +12,7 @@ infix operator ====:ComparisonPrecedence
 
 extension Array where Element: Comparable {
     
-    /// Sorts the array.
+    /// Sorts the array. The affects the order of the array.
     mutating func sort() {
         self = self.sorted()
     }
@@ -27,12 +27,12 @@ extension Array where Element : Hashable {
     }
     
     
-    /// Removes the duplicates from the array. The function is mutating and affects the order of the array.
+    /// Removes the duplicates from the array. The affects the order of the array.
     func duploMap() -> Array<Element> {
         return Array(Set(self))
     }
     
-    /// Non-duplicates from the array.
+    /// Non-duplicates from the array. The affects the order of the array.
     var nonDuplicates:Array<Element> {
         return Array(Set(self))
     }

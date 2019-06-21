@@ -131,7 +131,7 @@ extension Date {
         // Creating String of the date used to transformation
         let utc = dateFormatter.string(from: self)
         
-        // Craeting date of the string
+        // Creating date of the string
         let utcDate = dateFormatter.date(from: utc)
         
         // Settings up the current timezone
