@@ -11,18 +11,6 @@ import UIKit
 
 extension UIColor {
     
-    class func constructoYellow() -> UIColor {
-        
-        return #colorLiteral(red: 0.9845768809, green: 0.8452311754, blue: 0, alpha: 1)
-    }
-    
-    
-    class func constructoGray() -> UIColor {
-        
-        return #colorLiteral(red: 0.1921568627, green: 0.2196078431, blue: 0.2431372549, alpha: 1)
-    }
-    
-    
     var coreImageColor: CIColor {
         return CIColor(color: self)
     }

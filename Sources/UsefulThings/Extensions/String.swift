@@ -10,27 +10,31 @@ import Foundation
 import CommonCrypto
 import UIKit
 
-extension String {
+public extension String {
     
-    // MARK - DOCUMENTATION FINISHED ->
     
     /// Function returns String with first letter lowecased. Function does not distinguish more words in String, so only the first letter of the whole String is always lowercased.
     /// - returns: Edited string value of self.
-    func uncapitalizingFirstLetter() -> String {
+    public func uncapitalizingFirstLetter() -> String {
         let first = String(self.prefix(1)).lowercased()
         let other = String(self.dropFirst())
         return first + other
     }
+    
     /// Function mutates self String with first letter lowecased. Function does not distinguish more words in String, so only the first letter of the whole String is always lowercased. The function is __mutating__.
     /// - returns: Edited string value of self.
-    mutating func uncapitalizeFirstLetter() {
+    public mutating func uncapitalizeFirstLetter() {
         self = self.uncapitalizingFirstLetter()
+    }
+    
+    public var uncapitalized:String {
+        return self.uncapitalizingFirstLetter()
     }
     
     
     /// Function generates SHA256 in `String` format. Hash is generated from data of `String` described in UTF8.
     /// - returns: 'SHA256' hash value of self.
-    func get_sha256_String() -> String {
+    public func get_sha256_String() -> String {
         guard let data = self.data(using: .utf8) else {
             print("Data not available")
             return ""
@@ -39,14 +43,14 @@ extension String {
         return getHexString(fromData: digest(input: data as NSData))
     }
     
-    private func digest(input : NSData) -> NSData {
+    public func digest(input : NSData) -> NSData {
         let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
         var hashValue = [UInt8](repeating: 0, count: digestLength)
         CC_SHA256(input.bytes, UInt32(input.length), &hashValue)
         return NSData(bytes: hashValue, length: digestLength)
     }
     
-    private  func getHexString(fromData data: NSData) -> String {
+    public func getHexString(fromData data: NSData) -> String {
         var bytes = [UInt8](repeating: 0, count: data.length)
         data.getBytes(&bytes, length: data.length)
         
@@ -58,7 +62,7 @@ extension String {
     }
     // MARK - DOCUMENTATION FINISHED ->|
     
-    func snakeCased() -> String? {
+    public func snakeCased() -> String? {
         let pattern = "([a-z0-9])([A-Z])"
         
         let regex = try? NSRegularExpression(pattern: pattern, options: [])
@@ -67,15 +71,23 @@ extension String {
     }
     
     
-    static func randomString(length: Int) -> String {
+    public static func random(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0...length-1).map{ _ in letters.randomElement()! })
     }
     
-    func localized() -> String {
+    
+    public var localized:String {
         return NSLocalizedString(self, comment: self)
         
     }
+    
+    public func localize() -> String {
+        return NSLocalizedString(self, comment: self)
+        
+    }
+    
+    
     
     
 }
@@ -111,5 +123,7 @@ extension String {
             }
         }
     }
+    
+    
 }
 

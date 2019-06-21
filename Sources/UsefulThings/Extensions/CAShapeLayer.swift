@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-extension CAShapeLayer {
+public extension CAShapeLayer {
     
     /// Creates Rounded rectangle with given parameters in the current 'CAShapeLayer'.
     /// - parameters:
     ///     - rect:     'CGRect' rectangle dimensions.
     ///     - color:    'UIColor' of the rectangle.
     ///     - filled:   'Bool' value indicating if the rectangle should be filled.
-    func drawRoundedRect(rect: CGRect, andColor color: UIColor, filled: Bool) {
+    public func drawRoundedRect(rect: CGRect, andColor color: UIColor, filled: Bool) {
         fillColor = filled ? color.cgColor : UIColor.white.cgColor
         strokeColor = color.cgColor
         path = UIBezierPath(roundedRect: rect, cornerRadius: 7).cgPath

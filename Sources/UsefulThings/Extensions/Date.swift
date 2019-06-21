@@ -9,7 +9,7 @@
 import Foundation
 
 /// Formats of the dates available for function of with(:_).
-enum DateFormats:String {
+public enum DateFormats:String {
     case ddMMyyyy = "dd.MM.yyyy"
     case ddMMyyyyHHmmss = "dd.MM.yyyy HH:mm:ss"
     case SQLString = "yyyy-MM-dd HH:mm:ss"
@@ -22,13 +22,13 @@ enum DateFormats:String {
     case LLLL = "LLLL"
 }
 
-extension Date {
+public extension Date {
     
     
     /// Returns the Date in given string format.
     /// - Returns: The date in string.
     /// - Parameter format: Date format in which the date should be returned.
-    func with(format:DateFormats) -> String {
+    public func with(format:DateFormats) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
         return dateFormatter.string(from: self as Date)
@@ -38,25 +38,36 @@ extension Date {
     /// Returns `String` representation of given `Date` class in MySQL format
     /// - returns:
     ///     - `String` value in "yyyy-MM-dd'T'HH:mm:ss.SSSZ" format
-    func toSQLString() -> String {
+    public func toSQLString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: self as Date)
     }
-    
-    var day:String {
+    /// Returns `String` part  of given `Date`
+    /// - returns:
+    ///     - `String` day of the given date
+    public var day:String {
         return self.with(format: .dd)
     }
     
-    var month:String {
+    /// Returns `String` part  of given `Date`
+    /// - returns:
+    ///     - `String` month of the given date
+    public var month:String {
         return self.with(format: .MM)
     }
     
-    var monthAndYear:String {
+    /// Returns `String` part  of given `Date`
+    /// - returns:
+    ///     - `String` month and year of the given date
+    public var monthAndYear:String {
         return self.with(format: .MMYYYY)
     }
     
-    var year:String {
+    /// Returns `String` part  of given `Date`
+    /// - returns:
+    ///     - `String` year of the given date
+    public var year:String {
         return self.with(format: .yyyy)
     }
     
@@ -68,7 +79,7 @@ extension Date {
     ///     - date:`String` - value of Date, usually received via REST from server
     /// - returns:
     ///     Given string date as `Date` object.
-    func fromSQLString(date:String) -> Date {
+    public func fromSQLString(date:String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = date
@@ -94,7 +105,7 @@ extension Date {
     ///     - date:     `String` value in format "dd.MM.yyyy HH:mm:ss"
     /// - returns:      `Date` value of given _stringly_ described date or actual Date() in case the recoding will not succeed
     /// - warning:      It is predictable that this function in next versions will return `nil` instead of `Date()` in case of failure.
-    func fromReadableString(date:String) -> Date {
+    public func fromReadableString(date:String) -> Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy HH:mm:ss"
         let dateString = date
@@ -107,7 +118,7 @@ extension Date {
     
     
     /// Recalculates the given date to UTC date accroding to current timezone.
-    func fromCurrentToUTC() -> Date {
+    public func fromCurrentToUTC() -> Date {
         
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone.current
@@ -121,7 +132,7 @@ extension Date {
     }
     
     /// Recalculates the given date from UTC date accroding to current timezone.
-    func fromUTCToCurrent() -> Date {
+    public func fromUTCToCurrent() -> Date {
         
         let dateFormatter = DateFormatter()
         
@@ -145,7 +156,7 @@ extension Date {
     }
     
     /// Returns localized name of the month for the given date.
-    func monthName() -> String {
+    public func monthName() -> String {
         let date = self
         let calendar = Calendar.current
         let month = calendar.component(.month, from: date)
@@ -160,56 +171,56 @@ extension Date {
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of years in `Date`.
-    func years(from date: Date) -> Int {
+    public func years(from date: Date) -> Int {
         return Calendar.current.dateComponents([.year], from: date, to: self).year ?? 0
     }
     /// Returns the amount of months from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of months in `Date`.
-    func months(from date: Date) -> Int {
+    public func months(from date: Date) -> Int {
         return Calendar.current.dateComponents([.month], from: date, to: self).month ?? 0
     }
     /// Returns the amount of weeks from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of weeks in `Date`.
-    func weeks(from date: Date) -> Int {
+    public func weeks(from date: Date) -> Int {
         return Calendar.current.dateComponents([.weekOfMonth], from: date, to: self).weekOfMonth ?? 0
     }
     /// Returns the amount of days from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of days in `Date`.
-    func days(from date: Date) -> Int {
+    public func days(from date: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
     }
     /// Returns the amount of hours from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of hours in `Date`.
-    func hours(from date: Date) -> Int {
+    public func hours(from date: Date) -> Int {
         return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
     }
     /// Returns the amount of minutes from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of minutes in `Date`.
-    func minutes(from date: Date) -> Int {
+    public func minutes(from date: Date) -> Int {
         return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
     }
     /// Returns the amount of seconds from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `Int` number of seconds in `Date`.
-    func seconds(from date: Date) -> Int {
+    public func seconds(from date: Date) -> Int {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
     /// Returns the a custom time interval description from another date
     /// - parameters:
     ///     - date: `Date` which will be used for calculations.
     /// - returns:  `String` custom time interval description from another `Date`.
-    func offset(from date: Date) -> String {
+    public func offset(from date: Date) -> String {
         if years(from: date)   > 0 { return "\(years(from: date))y"   }
         if months(from: date)  > 0 { return "\(months(from: date))M"  }
         if weeks(from: date)   > 0 { return "\(weeks(from: date))w"   }

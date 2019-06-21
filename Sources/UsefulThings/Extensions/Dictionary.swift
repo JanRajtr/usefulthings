@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Dictionary
+public extension Dictionary
 {
     
     /// Initialization of `Dictionary` with given `Array` of _Keys_ and `Array` of _Values_
