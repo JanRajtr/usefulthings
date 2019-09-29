@@ -36,7 +36,7 @@ public extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
         if locale != nil {
-            dateFormatter.locale = Locale(identifier: locale)
+            dateFormatter.locale = Locale(identifier: locale!)
         }
         
         let date = dateFormatter.date(from:string)
