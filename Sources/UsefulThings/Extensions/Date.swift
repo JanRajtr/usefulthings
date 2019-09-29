@@ -13,7 +13,7 @@ public enum DateFormats:String {
     case ddMMyyyy = "dd.MM.yyyy"
     case ddMMyyyyHHmmss = "dd.MM.yyyy HH:mm:ss"
     case SQLString = "yyyy-MM-dd HH:mm:ss"
-    case yyyyMMdd_HHmmss_0000 = "yyyy-MM-dd HH:mm:ss"
+    case yyyyMMdd_HHmmss_0000 = "yyyy-MM-dd HH:mm:ss +0000"
     case yyyy = "yyyy"
     case MMYYYY = "MM.YYYY"
     case DDMM = "dd.MM"
