@@ -20,6 +20,8 @@ public enum DateFormats:String {
     case dd = "dd."
     case EEEE = "EEEE"
     case LLLL = "LLLL"
+    case ISO = "yyyy-MM-dd'T'HH:mm:ssZ"
+    case yyyymmddhhmmss = "yyyy-mm-dd hh:mm:ss"
 }
 
 public extension Date {
