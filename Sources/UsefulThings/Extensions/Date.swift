@@ -24,8 +24,24 @@ public enum DateFormats:String {
     case yyyymmddhhmmss = "yyyy-mm-dd hh:mm:ss"
 }
 
+public enum DateLocale:String {
+    case enUsPosix = "en_US_POSIX"
+}
+
+
 public extension Date {
     
+    func from(string:String, format:DateFormats, locale:String?) -> Date? {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format.rawValue
+        if locale != nil {
+            dateFormatter.locale = Locale(identifier: locale)
+        }
+        
+        let date = dateFormatter.date(from:string)
+        return date
+    }
     
     /// Returns the Date in given string format.
     /// - Returns: The date in string.
