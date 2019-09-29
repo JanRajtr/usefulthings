@@ -31,7 +31,7 @@ public enum DateLocale:String {
 
 public extension Date {
     
-    func from(string:String, format:DateFormats, locale:String?) -> Date? {
+    class func from(string:String, format:DateFormats, locale:String?) -> Date? {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
