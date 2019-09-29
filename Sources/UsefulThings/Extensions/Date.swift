@@ -31,12 +31,12 @@ public enum DateLocale:String {
 
 public extension Date {
     
-    static func from(string:String, format:DateFormats, locale:String?) -> Date? {
+    static func from(string:String, format:DateFormats, locale:DateLocale?) -> Date? {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format.rawValue
         if locale != nil {
-            dateFormatter.locale = Locale(identifier: locale!)
+            dateFormatter.locale = Locale(identifier: locale!.rawValue)
         }
         
         let date = dateFormatter.date(from:string)
