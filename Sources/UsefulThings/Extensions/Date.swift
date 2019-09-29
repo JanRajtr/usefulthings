@@ -21,7 +21,6 @@ public enum DateFormats:String {
     case EEEE = "EEEE"
     case LLLL = "LLLL"
     case ISO = "yyyy-MM-dd'T'HH:mm:ssZ"
-    case yyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss"
 }
 
 public enum DateLocale:String {
