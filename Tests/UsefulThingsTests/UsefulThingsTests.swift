@@ -6,7 +6,7 @@ final class UsefulThingsTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(UsefulThings().text, "Hello, World!")
+        Logger.log(prefix: "BLA", message: "TEST")
     }
 
     static var allTests = [

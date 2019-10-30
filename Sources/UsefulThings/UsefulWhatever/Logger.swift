@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Logger {
+internal class Logger {
     
     static func log(message:String) {
         
@@ -15,7 +15,7 @@ class Logger {
     }
     
     static func log(prefix:String..., message:String) {
-        var prefixes = ""
+        var prefixes = "["+(Bundle.init(for: Logger.self).bundleIdentifier ?? "LOGGER")+"]"
         prefix.forEach { (p) in
             prefixes += "["+p+"]"
         }
@@ -23,12 +23,13 @@ class Logger {
         debugPrint(prefixes + message)
     }
     
-    static func log(prefix:String..., error:Error) {
-        var prefixes = ""
+    static func log(prefix:String..., error:Error?) {
+        var prefixes = "["+(Bundle.init(for: Logger.self).bundleIdentifier ?? "LOGGER")+"]"
         prefix.forEach { (p) in
             prefixes += "["+p+"]"
         }
         prefixes += ": "
-        debugPrint(prefixes + error.localizedDescription)
+        debugPrint(prefixes + (error?.localizedDescription ?? String(describing: error)))
     }
 }
+
